@@ -60,9 +60,7 @@ function ingresarReloj(marca) {
     }
 }
 
-function mostrarConjunto() {
-  console.log("Gorra: " + gorra + " Arete: " + arete + " Reloj: " + reloj);
-}
+
 
 function armar(){
     let gorraAc = prompt("eliga su marca de Gorro que mas le guste nike(S/.250) o adidas(S/.180)?").toLowerCase();
@@ -97,7 +95,6 @@ function comprarConjunto(){
     }
     if(inputComprar ==="si"){
         armar();
-        mostrarConjunto()
         alert("El precio final de su conjunto con igv incluido es: " + precioFinal());
     } else {
         alert("Espero encuentre algo de su agrado.")
