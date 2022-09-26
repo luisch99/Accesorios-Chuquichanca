@@ -29,15 +29,15 @@ function ingresarArete(marca) {
     while ((areteNuevo != "mfb") && (areteNuevo != "farfetech")) {
         areteNuevo = prompt("eliga una marca de arete valida. mfb(S/.100) o farfetech(S/.80)?").toLowerCase();
     }
-    if (arete === areteNuevo) {
+    if (arete == areteNuevo) {
         alert("Es el mismo arete que ya tenias.")
     } else {
-        if(areteNuevo === "mfb"){
+        if(areteNuevo == "mfb"){
             precioarete = 100
         } else{
             precioarete = 80
         }
-        arete = areteNuevo;
+        arete == areteNuevo;
         alert("Se agrego un Accesorio " + areteNuevo);
     }
 }
@@ -47,15 +47,15 @@ function ingresarReloj(marca) {
     while ((relojNuevo != "chronos") && (relojNuevo != "casio")) {
         relojNuevo = prompt("eliga una marca de Reloj valida. chronos(S/.279) o casio(S/.299)?").toLowerCase();
     }
-    if (reloj === relojNuevo) {
+    if (reloj == relojNuevo) {
         alert("Es la mismo reloj que ya tenias.")
     } else {
-        if(relojNuevo === "Chronos"){
+        if(relojNuevo == "Chronos"){
             precioreloj = 279
         } else{
             precioreloj = 299
         }
-        reloj = relojNuevo;
+        reloj == relojNuevo;
         alert("Se agrego un Accesorio " + relojNuevo);
     }
 }
@@ -88,8 +88,7 @@ function precioFinal(){
     let precioFinalConIgv = 0;
     return(precioFinalConIgv = (precio()+(precio()*igv)));
 }
-/*Fin Funciones para sacar precio co y sin iva*/
-/*funcion para comprar pc*/
+
 function comprarConjunto(){
     let inputComprar = prompt("Desea armar un conjunto? si/no").toLowerCase();
     while(inputComprar != "si" && inputComprar != "no"){
