@@ -1,103 +1,83 @@
-let gorra;
-let preciogorra = 0;
-let arete;
-let precioarete = 0;
-let reloj;
-let precioreloj = 0;
-const igv =0.18 ;
+let deseos = [];
 
-function ingresarGorra(marca) {
-    let gorraNueva = marca.toLowerCase()
-    while ((gorraNueva != "nike") && (gorraNueva != "adidas")) {
-        gorraNueva = prompt("elige una marca de gorra valida. nike(S/.250) o adidas(S/.180)?").toLowerCase();
+class deseo{
+    constructor (Marca, tipo,nombre){
+        this.Marca = Marca;
+        this.tipo = tipo;
+        this.nombre = nombre;
     }
-    if (gorra == gorraNueva) {
-        alert("Es la misma gorra que ya tenias.")
-    } else {
-        if(gorraNueva == "nike"){
-            preciogorra = 250
-        } else{
-            preciogorra = 180
+}
+
+function saludarUsuario(){
+    let nombre = prompt("Hola!, bienvenido a la tienda, ¿Cuál es tu nombre?")
+    alert("Bienvenido a la tienda " + nombre)
+    menuPrincipal()
+}
+setTimeout(saludarUsuario,100)
+
+
+function menuPrincipal(){
+    let opcion = prompt(`Bienvenido a la tienda Vandal, seleccione la opción: 
+    1) Comprar Reloj.
+    2) Comprar conjuntos.
+    3) Agregar cosas a la lista de deseos.
+    4) Ver por mi cuenta.`)
+    if(opcion == 1){
+        compReloj();
+    }else if(opcion == 2){
+        comprarConjunto();
+    }else if(opcion == 3){
+        nuevoDeseo ();  
+        let respuesta = prompt("Desea agregar un nuevo deseo?")
+        if(respuesta == "si"){
+            nuevoDeseo ();  
+        }else{
+            alert("Gracias por la preferencia.")
         }
-        gorra == gorraNueva;
-        alert("Se agrego un Accesorio " + gorraNueva);
+    }else if(opcion == 4){
+        
     }
 }
 
-function ingresarArete(marca) {
-    let areteNuevo = marca.toLowerCase()
-    while ((areteNuevo != "mfb") && (areteNuevo != "farfetech")) {
-        areteNuevo = prompt("eliga una marca de arete valida. mfb(S/.100) o farfetech(S/.80)?").toLowerCase();
-    }
-    if (arete == areteNuevo) {
-        alert("Es el mismo arete que ya tenias.")
-    } else {
-        if(areteNuevo == "mfb"){
-            precioarete = 100
-        } else{
-            precioarete = 80
-        }
-        arete == areteNuevo;
-        alert("Se agrego un Accesorio " + areteNuevo);
-    }
-}
+// Creación Objetos
+const nuevoDeseo = () => {
+    let Marca = prompt("Que marca desea?");
+    let tipo = prompt("Que tipo desea?");
+   
+    let nuevoDeseo = new deseo (Marca, tipo)
+    deseos.push(nuevoDeseo);
 
-function ingresarReloj(marca) {
-    let relojNuevo = marca.toLowerCase();
-    while ((relojNuevo != "chronos") && (relojNuevo != "casio")) {
-        relojNuevo = prompt("eliga una marca de Reloj valida. chronos(S/.279) o casio(S/.299)?").toLowerCase();
-    }
-    if (reloj == relojNuevo) {
-        alert("Es la mismo reloj que ya tenias.")
-    } else {
-        if(relojNuevo == "Chronos"){
-            precioreloj = 279
-        } else{
-            precioreloj = 299
-        }
-        reloj == relojNuevo;
-        alert("Se agrego un Accesorio " + relojNuevo);
-    }
+    alert("Se registro el nuevo deseo")
+    alert("Ya puede visualizar su nuevo deseo en la consola.")
+    console.log(deseos)
 }
 
 
-
-function armar(){
-    let gorraAc = prompt("eliga su marca de Gorro que mas le guste nike(S/.250) o adidas(S/.180)?").toLowerCase();
-    ingresarGorra(gorraAc)
-    let areteAc = prompt("eliga su marca de Gorro que mas le guste mfb(S/.100) o farfetech(S/.80)?").toLowerCase();
-    ingresarArete(areteAc)
-    let relojAc = prompt("eliga su marca de Gorro que mas le guste chronos(S/.279) o casio(S/.299)?").toLowerCase();
-    ingresarReloj(relojAc)
-}
-
-function precio(){
-    let precioSinIgv = 0
-    if (preciogorra!= 0 && precioarete !=0 && precioreloj != 0){
-        precioSinIgv = preciogorra + precioarete + precioreloj
-        return(precioSinIgv)
-    } else{
-        alert("No se puede saber el precio si no se arma el conjunto!")
-        return(precioSinIgv)
+function compReloj(){
+    let Marca = prompt("¿De qué marca deseas?")
+    let opcion = prompt("Entonces si su marca es " + Marca + ", desea comprar su Reloj simple(S/. 180.99) O moderno (S/.350.50).");
+    if(opcion == "simple"){
+        
+        alert("El reloj escogido fue agregada")
+    }else if(opcion == "Moderno"){
+        
+        alert("El reloj escogido fue agregada")
+    }else{
+        alert("Dato incorrecto, prueba de nuevo")
+        menuPrincipal();
     }
-}
-
-function precioFinal(){
-    let precioFinalConIgv = 0;
-    return(precioFinalConIgv = (precio()+(precio()*igv)));
 }
 
 function comprarConjunto(){
-    let inputComprar = prompt("Desea armar un conjunto? si/no").toLowerCase();
-    while(inputComprar != "si" && inputComprar != "no"){
-        alert("Valor ingresado no valido. Ingrese si o no.")
-        inputComprar = prompt("Desea armar un conjunto? si/no").toLowerCase();
-    }
-    if(inputComprar ==="si"){
-        armar();
-        alert("El precio final de su conjunto con igv incluido es: " + precioFinal());
-    } else {
-        alert("Espero encuentre algo de su agrado.")
+    let Marca = prompt("¿De qué marca deseas el conjunto de reloj y cadena?").toLowerCase();
+    let opcion = prompt("Si su marca es " + Marca + "¿Desea el conjunto Simple (S/. 250.50)  o Moderno? (S/. 420.00)")
+    if(opcion == "simple"){
+        alert("Simple")
+    }else if(opcion == "moderno"){
+        alert("Moderno")
+    }else{
+        alert("Dato incorrecto, prueba de nuevo")
+        menuPrincipal();
     }
 }
-setTimeout(comprarConjunto,100)
+
